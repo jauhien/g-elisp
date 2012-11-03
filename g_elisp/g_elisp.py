@@ -6,6 +6,10 @@ g-driver interface
 
 g-common uses appropriate g-driver to have the job done
 
+- g-driver GAPI
+
+print GAPI -- API of g-driver, currently 0
+
 - g-driver <overlay> sync <url>
 
 synchronize overlay
@@ -33,10 +37,10 @@ If var argument is given g-driver should print value for this variable or None i
 If var is not given g-driver should print a list of variables (one per line) in form
 <variable name> = <value>
 
-Variables are those that must be set in ebuild,
-GAPI (API of g-driver, currently 0) and GCOMMON_PHASES (ebuild function that g-driver will handle)
+Variables are those that must be set in ebuild
+and GCOMMON_PHASES (ebuild function that g-driver will handle)
 
-Obligatory variables are: GAPI, EAPI, SRC_URI, GCOMMON_PHASES
+Obligatory variables are: EAPI, SRC_URI, GCOMMON_PHASES
 
 - g-driver <overlay> phase <category>/<package> <version> <ebuild-function>
 
@@ -78,6 +82,11 @@ def ebuild_function(cmd):
 
 def main():
     args = sys.argv[1:]
+
+    if args[0] == "GAPI":
+        print("0")
+        return 0
+    
     if len(args) < 2:
         raise GElispError("Not enough arguments")
     overlay = args[0]
