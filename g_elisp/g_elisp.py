@@ -98,7 +98,8 @@ def list_packages(overlay):
     return 0
 
 def list_categories(overlay):
-    pass
+    print('app-emacs')
+    return 0
 
 def package(overlay, pkg, ver, var):
     pass
