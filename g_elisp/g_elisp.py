@@ -70,6 +70,9 @@ def list_categories(overlay):
 def package(overlay, pkg, ver, var):
     pass
 
+def phase(overlay, pkg, ver, fnc):
+    pass
+
 def ebuild_function(cmd):
     pass
 
