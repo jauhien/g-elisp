@@ -55,6 +55,10 @@ handle given ebuild function, env variables must be set appropriately
 '''
 
 import sys
+from urllib import request
+
+from parsers import s_exp, cfg_file
+from files import *
 
 class GElispError(Exception):
     def __init__(self, value):
@@ -63,7 +67,24 @@ class GElispError(Exception):
         return repr(self.value)
 
 def sync(overlay, url):
-    pass
+    datadir = get_datadir(overlay)
+    if not os.path.exists(datadir):
+        os.makedirs(datadir)
+        
+    arcfile = get_arcfile(overlay)
+    archive_contents = url + '/archive-contents'
+    h = request.urlopen(archive_contents)
+    f = open(arcfile, 'wb')
+    f.write(h.read())
+    h.close()
+    f.close()
+
+    cfgfile = get_cfgfile(overlay)
+    f = open(cfgfile, 'wb')
+    f.write(bytes("url = " + url, 'UTF-8'))
+    f.close()
+    return 0
+    
 
 def list_packages(overlay):
     pass
