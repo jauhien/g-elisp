@@ -5,5 +5,8 @@
 # Distributed under the terms of the GNU General Public License v2
 #
 
-pass
+import sys
+from g_elisp import g_elisp
 
+if __name__ == "__main__":
+    sys.exit(g_elisp.main())
