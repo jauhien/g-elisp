@@ -87,7 +87,15 @@ def sync(overlay, url):
     
 
 def list_packages(overlay):
-    pass
+    f = open(get_arcfile(overlay), 'r')
+    t = s_exp.parseFile(f)[0][1:]
+    f.close()
+    for i in t:
+        ver = str(i[1][0][0])
+        for j in i[1][0][1:]:
+            ver = ver + '.' + str(j)
+        print('app-emacs/' + i[0] + ' ' + ver)
+    return 0
 
 def list_categories(overlay):
     pass
