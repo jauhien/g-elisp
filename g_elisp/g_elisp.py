@@ -135,7 +135,7 @@ def main():
     elif cmd == "list-categories":
         return list_categories(overlay)
 
-    elif cmd == package:
+    elif cmd == "package":
         if len(args) < 4:
             raise GElispError("Not enough arguments")
         pkg = args[2][10:]
@@ -146,7 +146,7 @@ def main():
             var = args[4]
         return package(overlay, pkg, ver, var)
 
-    elif cmd == phase:
+    elif cmd == "phase":
         if len(args) < 5:
             raise GElispError("Not enough arguments")
         pkg = args[2][10:]
