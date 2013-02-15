@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 from g_elisp.files import get_datadir, get_arcfile, get_cfgfile, get_eclfile
 from g_elisp.parsers import parse_repo, parse_args, parse_config, write_config, \
      Argument, Arguments, Command_group, Command
-from g_elisp.package import EBUILD_VARS
+from g_elisp.package import EBUILD_VARS_DICT, EBUILD_VARS_LIST
 
 def get_GAPI(args):
     print(0)
@@ -63,7 +63,7 @@ def get_inherit_list(args):
     return 0
 
 def list_vars(args):
-    for i in EBUILD_VARS:
+    for i in EBUILD_VARS_LIST:
         print(i)
     return 0
 
@@ -71,10 +71,10 @@ def get_vars(args):
     overlay = args.overlay[0]
     pkg_name = (args.package_name[0].partition('/'))[2]
     if args.var is None:
-        for i in EBUILD_VARS:
-            print(i + "=" + '"' + EBUILD_VARS[i](overlay, pkg_name) + '"')
+        for i in EBUILD_VARS_LIST:
+            print(i + "=" + '"' + EBUILD_VARS_DICT[i](overlay, pkg_name) + '"')
     else:
-        print(args.var + "=" + '"' + EBUILD_VARS[args.var](overlay, pkg_name) + '"')
+        print(args.var + "=" + '"' + EBUILD_VARS_DICT[args.var](overlay, pkg_name) + '"')
     return 0
 
 def list_phases(args):

@@ -55,7 +55,7 @@ def get_depend(overlay, pkg_name):
 def get_rdepend(overlay, pkg_name):
     return("${DEPEND}")
 
-EBUILD_VARS = {"DESCRIPTION" : get_description,
+EBUILD_VARS_DICT = {"DESCRIPTION" : get_description,
                "HOMEPAGE" : get_homepage,
                "SRC_URI" : get_src_uri,
                "LICENSE" : get_license,
@@ -66,3 +66,15 @@ EBUILD_VARS = {"DESCRIPTION" : get_description,
                "PKG_TYPE" : get_pkg_type,
                "DEPEND" : get_depend,
                "RDEPEND" : get_rdepend}
+
+EBUILD_VARS_LIST = {"DESCRIPTION",
+               "HOMEPAGE",
+               "SRC_URI",
+               "LICENSE",
+               "SLOT",
+               "KEYWORDS",
+               "IUSE",
+               "REPO_URI",
+               "PKG_TYPE",
+               "DEPEND",
+               "RDEPEND"}
