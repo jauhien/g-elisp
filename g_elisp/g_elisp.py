@@ -1,12 +1,12 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 import sys, collections, os
 from urllib import request
 from urllib.parse import urljoin
 
-from files import get_datadir, get_arcfile, get_cfgfile
-from parsers import parse_repo, parse_args, Argument, Arguments, Command_group, Command
+from g_elisp.files import get_datadir, get_arcfile, get_cfgfile
+from g_elisp.parsers import parse_repo, parse_args, Argument, Arguments, Command_group, Command
 
 def get_GAPI(args):
     print(0)
