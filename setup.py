@@ -11,5 +11,6 @@ setup(name          = 'g-elisp',
       author_email  = 'piatlicki@gmail.com',
       packages      = ['g_elisp'],
       scripts       = ['bin/g-elisp'],
+      package_data  = {'g_elisp': ['data/*']},
       license       = 'GPL',
       )
