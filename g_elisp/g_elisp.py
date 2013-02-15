@@ -5,7 +5,7 @@ import sys, collections, os
 from urllib import request
 from urllib.parse import urljoin
 
-from g_elisp.files import get_datadir, get_arcfile, get_cfgfile
+from g_elisp.files import get_datadir, get_arcfile, get_cfgfile, get_pkgpath
 from g_elisp.parsers import parse_repo, parse_args, Argument, Arguments, Command_group, Command
 
 def get_GAPI(args):
@@ -54,7 +54,7 @@ def list_licenses(args):
     pass
 
 def get_EAPI(args):
-    print(4)
+    print(5)
     return 0
 
 def get_inherit_list(args):
@@ -73,7 +73,7 @@ def get_phase(args):
     pass
 
 def get_eclass(args):
-    
+    print(get_pkgpath())
     return 0
 
 def get_license(args):
