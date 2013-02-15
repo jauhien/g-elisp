@@ -6,7 +6,7 @@ import os
 DATADIR = ".g-elisp"
 ARCFILE = "archive-contents"
 CFGFILE = "overlay.cfg"
-ECLFILE = "g-elisp.eclass"
+ECLFILE = "data/g-elisp.eclass"
 
 def get_datadir(overlay):
     return os.path.join(overlay, DATADIR)
