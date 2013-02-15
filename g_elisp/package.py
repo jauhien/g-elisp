@@ -42,6 +42,19 @@ def get_pkg_type(overlay, pkg_name):
     attr = package_dict[pkg_name]
     return attr.type
 
+def get_depend(overlay, pkg_name):
+    depend = "${DEPEND}"
+    f = open(get_arcfile(overlay), 'r')
+    package_dict = parse_repo(f).asDict()
+    f.close()
+    deps = package_dict[pkg_name].deps
+    for i in deps:
+        depend += "\n\tapp-emacs/" + i.name + "-" + i.version
+    return depend
+
+def get_rdepend(overlay, pkg_name):
+    return("${DEPEND}")
+
 EBUILD_VARS = {"DESCRIPTION" : get_description,
                "HOMEPAGE" : get_homepage,
                "SRC_URI" : get_src_uri,
@@ -50,5 +63,6 @@ EBUILD_VARS = {"DESCRIPTION" : get_description,
                "KEYWORDS" : get_keywords,
                "IUSE" : get_iuse,
                "REPO_URI" : get_repo_uri,
-               "PKG_TYPE" : get_pkg_type}
-
+               "PKG_TYPE" : get_pkg_type,
+               "DEPEND" : get_depend,
+               "RDEPEND" : get_rdepend}
