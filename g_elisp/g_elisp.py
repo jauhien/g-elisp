@@ -48,7 +48,7 @@ def list_packages(args):
     return 0
 
 def list_eclasses(args):
-    print(g-elisp)
+    print("g-elisp")
     return 0
 
 def list_licenses(args):
@@ -68,11 +68,13 @@ def list_vars(args):
     return 0
 
 def get_vars(args):
+    overlay = args.overlay[0]
+    pkg_name = (args.package_name[0].partition('/'))[2]
     if args.var is None:
         for i in EBUILD_VARS:
-            print(i + "=" + '"' + EBUILD_VARS[i](args.overlay, args.package_name) + '"')
+            print(i + "=" + '"' + EBUILD_VARS[i](overlay, pkg_name) + '"')
     else:
-        print(args.var + "=" + '"' + EBUILD_VARS[args.var](args.overlay, args.package_name) + '"')
+        print(args.var + "=" + '"' + EBUILD_VARS[args.var](overlay, pkg_name) + '"')
     return 0
 
 def list_phases(args):
