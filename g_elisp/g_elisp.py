@@ -73,7 +73,9 @@ def get_phase(args):
     pass
 
 def get_eclass(args):
-    print(get_pkgpath())
+    eclass = open(get_eclfile(), 'r')
+    print(eclass.read())
+    eclass.close()
     return 0
 
 def get_license(args):
