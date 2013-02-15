@@ -67,7 +67,7 @@ EBUILD_VARS_DICT = {"DESCRIPTION" : get_description,
                "DEPEND" : get_depend,
                "RDEPEND" : get_rdepend}
 
-EBUILD_VARS_LIST = {"DESCRIPTION",
+EBUILD_VARS_LIST = ["DESCRIPTION",
                "HOMEPAGE",
                "SRC_URI",
                "LICENSE",
@@ -77,4 +77,4 @@ EBUILD_VARS_LIST = {"DESCRIPTION",
                "REPO_URI",
                "PKG_TYPE",
                "DEPEND",
-               "RDEPEND"}
+               "RDEPEND"]
