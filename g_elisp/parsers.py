@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import collections, argparse
+import collections, argparse, configparser
 from pyparsing import *
 
 #repository parser
 
-Package = collections.namedtuple("Package", "name version deps desc type")
+Attributes = collections.namedtuple("Attributes", "version deps desc type")
 Dependency = collections.namedtuple("Dependency", "name version")
 
 LPAR, RPAR, LBRK, RBRK, LBRC, RBRC, VBAR, HEX, PT, ONE = map(Suppress, "()[]{}|#.1")
@@ -15,15 +15,14 @@ NIL = (Literal("nil") | Literal("()")).setParseAction(lambda s, l, t : [[]])
 pkg_name = Word(alphanums + "_-+.")
 pkg_vers = (LPAR + Word(nums + " ") + RPAR).setParseAction(lambda s, l, t: [t[0].replace(' ','.')])
 pkg_desc = dblQuotedString.setParseAction(removeQuotes)
-pkg_type = Literal("single") | Literal("tar")
+pkg_type = Literal("single").setParseAction(lambda s, l, t: ["el"]) | Literal("tar")
 pkg_depn = (LPAR + pkg_name + pkg_vers + RPAR).setParseAction(lambda s, l, t : [Dependency(t[0], t[1])])
 pkg_deps = (LPAR + OneOrMore(pkg_depn) + RPAR).\
            setParseAction(lambda s, l, t: [[i for i in t]])\
            | NIL
-package  = (LPAR + pkg_name + PT + LBRK + pkg_vers + pkg_deps + pkg_desc + pkg_type + RBRK + RPAR)\
-           .setParseAction(lambda s, l ,t: [Package(t[0], t[1], t[2], t[3], t[4])])
-repo     = (LPAR + ONE + OneOrMore(package) + RPAR)
-
+pkg_attr = (PT + LBRK + pkg_vers + pkg_deps + pkg_desc + pkg_type + RBRK)\
+           .setParseAction(lambda s, l ,t: [Attributes(t[0], t[1], t[2], t[3])])
+repo     = Dict(LPAR + ONE + OneOrMore(Group(LPAR + pkg_name + pkg_attr + RPAR)) + RPAR)
 
 def parse_repo(f):
     return repo.parseFile(f)
@@ -32,9 +31,25 @@ def parse_repo(f):
 
 #config parser
 
-EQ            = Suppress('=') 
-cfg_line      = Group(Word(printables) + EQ + Word(printables))
-cfg_file      = OneOrMore(cfg_line)
+def parse_config(f):
+    config = configparser.ConfigParser()
+    config.read(f)
+    cfg = {}
+    for sn, sc in config.items():
+        sec = {}
+        for n, v in sc.items():
+            sec[n] = v
+        cfg[sn] = sec
+    return cfg
+    
+
+def write_config(f, cfg):
+    config = configparser.ConfigParser()
+    for sect, sets in cfg.items():
+        config[sect] = sets
+    with open(f, 'w') as configfile:
+        config.write(configfile)
+    return 0
 
 #end config parser
 

@@ -7,6 +7,7 @@ from urllib.parse import urljoin
 
 from g_elisp.files import get_datadir, get_arcfile, get_cfgfile, get_eclfile
 from g_elisp.parsers import parse_repo, parse_args, Argument, Arguments, Command_group, Command
+from g_elisp.package import EBUILD_VARS
 
 def get_GAPI(args):
     print(0)
@@ -28,9 +29,8 @@ def sync(args):
     f.close()
 
     cfgfile = get_cfgfile(overlay)
-    f = open(cfgfile, 'wb')
-    f.write(bytes("url = " + url, 'UTF-8'))
-    f.close()
+    cfg = {"overlay": {"url" : url}}
+    write_config(cfgfile, cfg)
     return 0
 
 def list_categories(args):
@@ -40,10 +40,10 @@ def list_categories(args):
 def list_packages(args):
     overlay = args.overlay[0]
     f = open(get_arcfile(overlay), 'r')
-    package_list = parse_repo(f)
+    package_dict = parse_repo(f).asDict()
     f.close()
-    for p in package_list:
-        print('app-emacs/' + p.name + ' ' + p.version)
+    for name, attr in package_dict.items():
+        print('app-emacs/' + name + ' ' + attr.version)
     return 0
 
 def list_eclasses(args):
@@ -51,26 +51,34 @@ def list_eclasses(args):
     return 0
 
 def list_licenses(args):
-    pass
+    return 0
 
 def get_EAPI(args):
     print(5)
     return 0
 
 def get_inherit_list(args):
-    pass
+    print("g-elisp")
+    return 0
 
 def list_vars(args):
-    pass
+    for i in EBUILD_VARS:
+        print(i)
+    return 0
 
 def get_vars(args):
-    pass
+    if args.var is None:
+        for i in EBUILD_VARS:
+            print(i + "=" + '"' + EBUILD_VARS[i](args.overlay, args.package_name) + '"')
+    else:
+        print(args.var + "=" + '"' + EBUILD_VARS[args.var](args.overlay, args.package_name) + '"')
+    return 0
 
 def list_phases(args):
-    pass
+    return 0
 
 def get_phase(args):
-    pass
+    return 0
 
 def get_eclass(args):
     eclass = open(get_eclfile(), 'r')
@@ -79,7 +87,7 @@ def get_eclass(args):
     return 0
 
 def get_license(args):
-    pass
+    return 0
 
 def main():
     args = Arguments([Argument('overlay', 1)],
