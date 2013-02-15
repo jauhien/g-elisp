@@ -18,9 +18,8 @@ def get_cfgfile(overlay):
     datadir = get_datadir(overlay)
     return os.path.join(datadir, CFGFILE)
 
-def get_pkgpath ():
-    try:
-        root = __file__
-        if os.path.islink(root):
-            root = os.path.realpath(root)
-        return os.path.dirname(os.path.abspath(root))
+def get_pkgpath():
+    root = __file__
+    if os.path.islink(root):
+        root = os.path.realpath(root)
+    return os.path.dirname(os.path.abspath(root))
