@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import collections, argparse, configparser
+import collections
 from pyparsing import *
 
 #repository parser
