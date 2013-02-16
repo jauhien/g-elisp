@@ -5,10 +5,11 @@ import sys, collections, os
 from urllib import request
 from urllib.parse import urljoin
 
-from g_common.parsers import parse_args, Argument, Arguments, Command_group, Command
+from g_common.parsers import parse_args, Argument, Arguments, Command_group, Command, \
+     parse_config, write_config
 
 from g_elisp.files import get_datadir, get_arcfile, get_cfgfile, get_eclfile
-from g_elisp.parsers import parse_repo,  parse_config, write_config
+from g_elisp.parsers import parse_repo
 from g_elisp.package import EBUILD_VARS_DICT, EBUILD_VARS_LIST
 
 def get_GAPI(args):

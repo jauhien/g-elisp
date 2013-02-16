@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+<repo quality="experimental" status="unofficial">
+    <name>gnu-elpa</name>
+    <description>packages for emacs</description>
+    <homepage>http://elpa.gnu.org/</homepage>
+    <source type="g-common">elpa http://elpa.gnu.org/packages/</source>
+</repo>
+</repositories>
