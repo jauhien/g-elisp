@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from g_common import parse_config
+from g_common.parsers import parse_config
 
 from g_elisp.parsers import parse_repo
 from g_elisp.files import get_arcfile, get_cfgfile
