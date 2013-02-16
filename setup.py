@@ -13,6 +13,6 @@ setup(name          = 'g-elisp',
       scripts       = ['bin/g-elisp'],
       package_data  = {'g_elisp': ['data/*']},
       data_files    = [('/usr/share/g-common/drivers/', ['elpa.cfg']),
-                       ('/etc/layman/overlays/', ['elpa-overlays.xml']),]
+                       ('/etc/layman/overlays/', ['elpa-overlays.xml']),],
       license       = 'GPL',
       )
