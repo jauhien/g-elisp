@@ -95,7 +95,7 @@ def get_license(args):
 def main():
     args = Arguments([Argument('overlay', 1)],
                      [Command('GAPI', 'display API version', [], get_GAPI),
-                      Command('sync', 'sync overlay', [Argument('url', 1)], sync),
+                      Command('sync', 'sync overlay', [Argument('method', 1), Argument('url', 1)], sync),
                       Command('list-categories', 'list categories', [], list_categories),
                       Command('list-packages', 'list packages', [], list_packages),
                       Command('list-eclasses', 'list eclasses', [], list_eclasses),
