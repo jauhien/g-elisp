@@ -117,7 +117,7 @@ def main():
     ##                   ])
     ## args = parse_args(args)
     ## return args.func(args)
-    pass
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main())
