@@ -11,6 +11,6 @@
     <name>marmalade</name>
     <description>packages for emacs</description>
     <homepage>http://marmalade-repo.org/</homepage>
-    <source type="g-common">elpa http://marmalade-repo.org/packages</source>
+    <source type="g-common">elpa http://marmalade-repo.org/packages/</source>
 </repo>
 </repositories>
