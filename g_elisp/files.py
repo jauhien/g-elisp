@@ -3,10 +3,16 @@
 
 import os
 
+from g_common.files import ConfigFile
+
 DATADIR = ".g-elisp"
 ARCFILE = "archive-contents"
 CFGFILE = "overlay.cfg"
 ECLFILE = "data/g-elisp.eclass"
+
+class GELipsOverlayConfig(ConfigFile):
+    def __init__(self, overlay):
+        super().__init__(os.path.join(overlay, DATADIR), CFGFILE)
 
 def get_datadir(overlay):
     return os.path.join(overlay, DATADIR)
