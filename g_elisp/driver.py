@@ -38,6 +38,7 @@ class GELispDriver(Driver):
         return 0
 
     def ebuild_list(self, args):
+        self.overlay = args.overlay
         o_arc = ArchiveContents(self.overlay)
         repo = o_arc.parse()
         for p in repo:
@@ -45,7 +46,9 @@ class GELispDriver(Driver):
         return 0
 
     def ebuild_src(self, args):
-        print("""# Copyright 1999-2012 Gentoo Foundation
+        o_arc = ArchiveContents(self.overlay)
+        repo = o_arc.parse()
+        print("""# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
