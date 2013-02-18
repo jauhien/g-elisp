@@ -4,7 +4,8 @@
 import os
 
 from g_common.driver import Driver
-from g_elisp.files import GELispOverlayConfig
+
+from g_elisp.files import GELispOverlayConfig, ArchiveContents
 
 class GELispDriver(Driver):
     def __init__(self):
@@ -12,14 +13,17 @@ class GELispDriver(Driver):
 
     def sync(self, args):
         self.method = args.method
+        self.uri = args.uri
         o_cfg = GELispOverlayConfig(args.overlay)
         try:
             o_cfg.read()
         except IOError as e:
             pass
-        o_cfg.cfg['overlay'] = {'method' : self.method}
+        o_cfg.cfg['overlay'] = {'method' : self.method, 'uri' : self.uri}
         o_cfg.write()
         self.overlay = args.overlay
         self.name = os.path.split(args.overlay)[1]
         print('g-elisp: syncing overlay ' + self.name)
+        o_arc = ArchiveContents(self.overlay)
+        o_arc.sync(self.uri)
         return 0
