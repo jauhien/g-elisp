@@ -78,7 +78,7 @@ inherit g-elisp
         print()
         deps = ""
         for i in attr.deps:
-            deps += "\n\tapp-emacs/" + i.name + "-" + i.version
+            deps += "\n\tapp-emacs/" + i.name
         print('DEPEND="${DEPEND}' + deps + '"')
         print('RDEPEND="${DEPEND}"')
         print()
