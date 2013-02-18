@@ -119,7 +119,7 @@ def main():
     ##                   ])
     ## args = parse_args(args)
     ## return args.func(args)
-    g_driver = GELispOverlayDriver()
+    g_driver = GELispDriver()
     g_driver()
     return 0
 
