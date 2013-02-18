@@ -40,16 +40,6 @@ class ArchiveContents:
             self.repo = repo.parseFile(arcfile).asDict()
         return self.repo
 
-def get_datadir(overlay):
-    return os.path.join(overlay, DATADIR)
-
-def get_arcfile(overlay):
-    datadir = get_datadir(overlay)
-    return os.path.join(datadir, ARCFILE)
-
-def get_cfgfile(overlay):
-    datadir = get_datadir(overlay)
-    return os.path.join(datadir, CFGFILE)
 
 def get_pkgpath():
     root = __file__
@@ -60,4 +50,3 @@ def get_pkgpath():
 def get_eclfile():
     path = get_pkgpath()
     return os.path.join(path, ECLFILE)
-

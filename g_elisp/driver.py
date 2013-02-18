@@ -5,7 +5,7 @@ import os
 
 from g_common.driver import Driver
 
-from g_elisp.files import GELispOverlayConfig, ArchiveContents
+from g_elisp.files import GELispOverlayConfig, ArchiveContents, get_eclfile
 
 class GELispDriver(Driver):
     def __init__(self):
@@ -29,15 +29,19 @@ class GELispDriver(Driver):
         return 0
 
     def eclass_list(self, args):
-        print('test')
+        print('g-elisp')
         return 0
 
     def eclass_src(self, args):
-        print('test')
+        with open(get_eclfile(), 'r') as eclass:
+            print(eclass.read())
         return 0
 
     def ebuild_list(self, args):
-        print('app-portage/test 1')
+        o_arc = ArchiveContents(self.overlay)
+        repo = o_arc.parse()
+        for p in repo:
+            print("app-emacs/" + p.name + " " + p.version)
         return 0
 
     def ebuild_src(self, args):
