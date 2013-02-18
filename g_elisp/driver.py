@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from g_common.driver import Driver
+from g_elisp.files import GELipsOverlayConfig
 
 class GELispDriver(Driver):
     def __init__(self):
