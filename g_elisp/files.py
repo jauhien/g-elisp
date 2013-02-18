@@ -20,7 +20,7 @@ class ArchiveContents:
     def __init__(self, overlay):
         self.name = ARCFILE
         self.directory = os.path.join(overlay, DATADIR)
-        self.path = os.path.join(self.datadir, ARCFILE)
+        self.path = os.path.join(self.directory, ARCFILE)
 
     def sync(self, uri):
         if not os.path.exists(self.directory):
