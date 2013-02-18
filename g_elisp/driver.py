@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import os
+
 from g_common.driver import Driver
 from g_elisp.files import GELispOverlayConfig
 
