@@ -10,7 +10,7 @@ ARCFILE = "archive-contents"
 CFGFILE = "overlay.cfg"
 ECLFILE = "data/g-elisp.eclass"
 
-class GELipsOverlayConfig(ConfigFile):
+class GELispOverlayConfig(ConfigFile):
     def __init__(self, overlay):
         super().__init__(os.path.join(overlay, DATADIR), CFGFILE)
 
