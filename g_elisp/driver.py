@@ -10,7 +10,7 @@ class GELispDriver(Driver):
 
     def sync(self, args):
         self.method = args.method
-        o_cfg = GELispOverlayConfig(overlay)
+        o_cfg = GELispOverlayConfig(args.overlay)
         try:
             o_cfg.read()
         except IOError as e:
