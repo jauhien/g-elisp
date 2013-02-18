@@ -37,7 +37,7 @@ class GELispDriver(Driver):
         return 0
 
     def ebuild_list(self, args):
-        print('test')
+        print('test 1')
         return 0
 
     def ebuild_src(self, args):
