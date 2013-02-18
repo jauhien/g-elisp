@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import os
+from urllib import request
+from urllib.parse import urljoin
 
 from g_common.files import ConfigFile
 
