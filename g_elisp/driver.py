@@ -49,6 +49,6 @@ EAPI=5
 
 DESCRIPTION="test"
 HOMEPAGE="http://test.org"
-SRC_URI=""
+SRC_URI="0"
 """)
         return 0
