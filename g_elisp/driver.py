@@ -47,8 +47,10 @@ class GELispDriver(Driver):
 
 EAPI=5
 
+SLOT="0"
+
 DESCRIPTION="test"
 HOMEPAGE="http://test.org"
-SRC_URI="0"
+SRC_URI=""
 """)
         return 0
