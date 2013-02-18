@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from g_elisp.driver import GELispDriver
+
 ## import sys, collections, os
 ## from urllib import request
 ## from urllib.parse import urljoin
@@ -117,6 +119,8 @@ def main():
     ##                   ])
     ## args = parse_args(args)
     ## return args.func(args)
+    g_driver = GELispOverlayDriver()
+    g_driver()
     return 0
 
 if __name__ == "__main__":
