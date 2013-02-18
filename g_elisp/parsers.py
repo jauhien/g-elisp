@@ -21,7 +21,9 @@ pkg_deps = (LPAR + OneOrMore(pkg_depn) + RPAR).\
            setParseAction(lambda s, l, t: [[i for i in t]])\
            | NIL
 pkg_attr = (pkg_deps + pkg_desc + pkg_type + RBRK)\
-           .setParseAction(lambda s, l ,t: [Attributes(t[0], t[1], t[2])])
+           .setParseAction(lambda s, l ,t: [Attributes(t[0],
+                                            ''.join( c for c in t[1] if c not in '"\'`{}$'),
+                                            t[2])])
 pkg      = (pkg_name + PT + LBRK + pkg_vers)\
            .setParseAction(lambda s, l ,t: [Package(t[0], t[1])])
 repo     = Dict(LPAR + ONE + OneOrMore(Group(LPAR + pkg + pkg_attr + RPAR)) + RPAR)
