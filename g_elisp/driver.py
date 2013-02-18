@@ -27,3 +27,28 @@ class GELispDriver(Driver):
         o_arc = ArchiveContents(self.overlay)
         o_arc.sync(self.uri)
         return 0
+
+    def eclass_list(self, args):
+        print('test')
+        return 0
+
+    def eclass_src(self, args):
+        print('test')
+        return 0
+
+    def ebuild_list(self, args):
+        print('test')
+        return 0
+
+    def ebuild_src(self, args):
+        print("""# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+EAPI=5
+
+DESCRIPTION="test"
+HOMEPAGE="http://test.org"
+SRC_URI=""
+""")
+        return 0
