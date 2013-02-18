@@ -6,6 +6,7 @@ import os
 from g_common.driver import Driver
 
 from g_elisp.files import GELispOverlayConfig, ArchiveContents, get_eclfile
+from g_elisp.parsers import Package
 
 class GELispDriver(Driver):
     def __init__(self):
