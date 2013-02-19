@@ -29,7 +29,7 @@ class GELispDriver(Driver):
             o_cfg.cached_read()
         except Exception:
             pass
-        o_cfg.src['overlay'] = {'method' : method, 'uri' : uri}
+        o_cfg.src['overlay'] = {'method' : self.method, 'uri' : self.uri}
         try:
             o_cfg.cached_write()
         except Exception:
@@ -62,6 +62,7 @@ class GELispDriver(Driver):
         return ebuilds
 
     def get_ebuild(self, ebuild):
+        print(ebuild)
         datadir = os.path.join(self.overlay, self.datadir)
         if self.arc is None:
             self.arc = ArchiveContents(self.arcfile, datadir, datadir)
