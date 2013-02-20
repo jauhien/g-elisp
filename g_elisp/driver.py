@@ -18,6 +18,7 @@ class GELispDriver(Driver):
         self.ecldir = "data"
         self.eclfile = "g-elisp.eclass"
         self.arc = None
+        self.uri = None
     
     def sync(self, args):
         self.overlay = args.overlay
