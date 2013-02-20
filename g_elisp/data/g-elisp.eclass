@@ -29,8 +29,6 @@ GELISP_STORE_DIR="${PORTAGE_ACTUAL_DISTDIR:-${DISTDIR}}"
 # @DESCRIPTION: fetch command
 GELISP_FETCH_CMD="wget"
 
-SOURCEFILE=${REALNAME}-${PV}.${PKG_TYPE}
-
 inherit elisp
 
 EXPORT_FUNCTIONS src_{unpack,compile,install}
@@ -38,6 +36,7 @@ EXPORT_FUNCTIONS src_{unpack,compile,install}
 g-elisp_fetch() {
 	addwrite "${GELISP_STORE_DIR}"
 	pushd "${GELISP_STORE_DIR}" >/dev/null || die "can't chdir to ${GELISP_STORE_DIR}"
+	local SOURCEFILE=${REALNAME}-${PV}.${PKG_TYPE}
 	if [[ ! -f "${SOURCEFILE}" ]]; then
 		$GELISP_FETCH_CMD ${REPO_URI}${SOURCEFILE} || die
 	fi
