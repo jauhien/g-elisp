@@ -68,7 +68,7 @@ class GELispDriver(Driver):
             self.arc = ArchiveContents(self.arcfile, datadir, datadir)
             self.arc.cached_read()
         pkg = Package(ebuild[1], ebuild[2])
-        attr = self.arc.sec[pkg]
+        attr = self.arc.src[pkg]
         if self.uri is None:
             o_cfg = ConfigFile(self.cfgfile, datadir, datadir)
             o_cfg.cached_read()
