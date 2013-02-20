@@ -36,11 +36,11 @@ class GELispDriver(Driver):
             print ('Error when writing overlay config')
             return -1
         arc = ArchiveContents(self.arcfile, datadir, datadir)
-        #try:
-        arc.sync(uri)
-        #except Exception:
-        #    print ('Error when syncing')
-        #    return -1 
+        try:
+            arc.sync(self.uri)
+        except Exception:
+            print ('Error when syncing')
+            return -1 
         return 0
     
     def list_eclasses(self):
