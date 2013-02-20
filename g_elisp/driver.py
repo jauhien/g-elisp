@@ -48,7 +48,8 @@ class GELispDriver(Driver):
         return ['g-elisp']
 
     def get_eclass(self, eclass):
-        ecl = TextFile(self.eclfile, os.path.join(get_pkgpath(), self.ecldir), self.datadir)
+        datadir = os.path.join(self.overlay, self.datadir)
+        ecl = TextFile(self.eclfile, os.path.join(get_pkgpath(), self.ecldir), datadir)
         ecl.cached_read()
         return ecl.src
 
