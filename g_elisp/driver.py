@@ -78,6 +78,7 @@ class GELispDriver(Driver):
         deps = ""
         for i in attr.deps:
             deps += "\n\tapp-emacs/" + i.name.replace('.','_')
+        pkgtype = attr.type.replace('single', 'tar')
         ebuild_src = ["# Copyright 1999-2013 Gentoo Foundation",
                       "# Distributed under the terms of the GNU General Public License v2",
                       "# $Header: $",
@@ -96,8 +97,8 @@ class GELispDriver(Driver):
                       'IUSE=""',
                       "",
                       'REPO_URI="' + self.uri + '"',
-                      'PKG_TYPE="' + attr.type + '"',
-                      'PKG_TYPE="' + attr.type + '"',
+                      'PKG_TYPE="' + pkgtype + '"',
+                      'REALNAME="' + attr.realname + '"',
                       "",
                       'DEPEND="${DEPEND}' + deps + '"',
                       'RDEPEND="${DEPEND}"'

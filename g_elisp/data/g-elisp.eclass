@@ -9,6 +9,10 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 #
+# @ECLASS-VARIABLE: REALNAME
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+#
 # @ECLASS-VARIABLE: GELISP_STORE_DIR
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -27,9 +31,9 @@ g-elisp_fetch() {
 	addwrite "${GELISP_STORE_DIR}"
 	pushd "${GELISP_STORE_DIR}" >/dev/null || die "can't chdir to ${GELISP_STORE_DIR}"
 	if [[ ! -f "${P}.${PKG_TYPE}" ]]; then
-		$GELISP_FETCH_CMD ${REPO_URI}/${P}.${PKG_TYPE}
+		$GELISP_FETCH_CMD ${REPO_URI}/${REALNAME}-${PV}.${PKG_TYPE}
 	fi
-	cp ${P}.${PKG_TYPE} ${DISTDIR}
+	cp ${REALNAME}-${PV}.${PKG_TYPE} ${DISTDIR}/${P}.${PKG_TYPE}
 	popd >/dev/null
 }
 
