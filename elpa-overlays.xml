@@ -13,4 +13,10 @@
     <homepage>http://marmalade-repo.org/</homepage>
     <source type="g-common">elpa http://marmalade-repo.org/packages/</source>
 </repo>
+<repo quality="experimental" status="unofficial">
+    <name>melpa</name>
+    <description>packages for emacs</description>
+    <homepage>http://melpa.milkbox.net</homepage>
+    <source type="g-common">elpa http://melpa.milkbox.net/packages/</source>
+</repo>
 </repositories>
