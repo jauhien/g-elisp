@@ -3,6 +3,8 @@
 
 import os
 
+from pyparsing import ParseException
+
 from g_common.overlay import Driver
 from g_common.files import ConfigFile, TextFile
 
@@ -39,6 +41,12 @@ class GELispDriver(Driver):
         arc = ArchiveContents(self.arcfile, datadir, datadir)
         try:
             arc.sync(self.uri)
+        except IOError error:
+            print('Error when syncing: ' + error.strerror)
+            return -1
+        except ParseException error:
+            print('Error when syncing: ' + str(error))
+            return -1
         except Exception:
             print ('Error when syncing')
             return -1 
