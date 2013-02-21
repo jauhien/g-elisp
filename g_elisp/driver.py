@@ -41,10 +41,10 @@ class GELispDriver(Driver):
         arc = ArchiveContents(self.arcfile, datadir, datadir)
         try:
             arc.sync(self.uri)
-        except IOError error:
+        except IOError as error:
             print('Error when syncing: ' + error.strerror)
             return -1
-        except ParseException error:
+        except ParseException as error:
             print('Error when syncing: ' + str(error))
             return -1
         except Exception:
