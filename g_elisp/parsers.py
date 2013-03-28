@@ -30,7 +30,7 @@ pkg_deps = (LPAR + OneOrMore(pkg_depn) + RPAR).\
            | NIL
 pkg_attr = (pkg_deps + pkg_desc + pkg_type + RBRK)\
            .setParseAction(lambda s, l ,t: [Attributes('', t[0],
-                                            ''.join( c for c in t[1] if c not in '"\'`{}$'),
+                                            ''.join( c for c in t[1] if c not in '"\'`{}$\\'),
                                             t[2])])
 pkg      = (pkg_name + PT + LBRK + pkg_vers)\
            .setParseAction(lambda s, l ,t: [Package(t[0], t[1])])
