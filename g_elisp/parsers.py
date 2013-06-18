@@ -18,8 +18,10 @@ Package = collections.namedtuple("Package", "name version")
 
 LPAR, RPAR, LBRK, RBRK, LBRC, RBRC, VBAR, HEX, PT, ONE = map(Suppress, "()[]{}|#.1")
 
+Q1, Q2 = map(Suppress, "'\"")
+
 NIL = (Literal("nil") | Group(LPAR + RPAR)).setParseAction(lambda s, l, t : [[]])
-pkg_name = Word(alphanums + "_-+.")
+pkg_name = ZeroOrMore(Q1 | Q2) + Word(alphanums + "_-+.") + ZeroOrMore(Q1 | Q2)
 pkg_vers = (LPAR + Word(nums + " -") + RPAR).\
            setParseAction(lambda s, l, t: [t[0].replace(' ','.').replace('-','')])
 pkg_desc = dblQuotedString.setParseAction(removeQuotes)
